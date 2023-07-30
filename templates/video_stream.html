@@ -40,9 +40,9 @@
             object-fit: cover; /* Ensure the video covers the entire area */
         }
     </style>
-    <script type="text/javascript" src="../jsQR-master/docs/jsQR.js"></script>
     <link rel="stylesheet" type="text/css" href="../static/Css/styles.css">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='Css/styles.css') }}">
+    <script src="../static/js/jsQR.js"></script>
 </head>
 <body class="background-image">
     <div id="popupOverlay">
@@ -54,7 +54,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="../jsQR-master/docs/jsQR.js"></script>
     <script>
         // JavaScript code for opening the scanner and handling scanned data
         function openScanner() {
