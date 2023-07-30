@@ -421,9 +421,7 @@ def save_student_data_to_table(name, roll_no):
 
         # Insert the entity into the "Records" table
         table_service.insert_entity('Records', student_data)
-    else:
-        # Handle the case when the entity already exists
-        print("Entity already exists:", existing_entity)
+
 
 
 
