@@ -464,7 +464,26 @@ p {
       line-height: 2.3;
     }
   }
-
+  .form-label11 {
+    font-size: 60px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    background-image: linear-gradient(45deg, #3547c0, #2c5866);
+    background-clip: text; /* Apply gradient to the text only */
+    -webkit-background-clip: text; /* For Safari support */
+    color: transparent; /* Make the text transparent */
+    line-height: 2.3;
+  }
+  .form-label12 {
+    font-size: 30px;
+    margin-top: 50px;
+    
+    background-image: linear-gradient(45deg, #35c0b7, #2c5866);
+    background-clip: text; /* Apply gradient to the text only */
+    -webkit-background-clip: text; /* For Safari support */
+    color: transparent; /* Make the text transparent */
+    line-height: 2.3;
+  }
   .buttons-container {
     display: flex;
     justify-content: space-between;
