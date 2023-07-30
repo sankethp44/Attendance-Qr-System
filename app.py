@@ -408,20 +408,25 @@ def is_duplicate(name, roll_no):
     return any(entities)
 
 def save_student_data_to_table(name, roll_no):
-    # Check if the entity with the given PartitionKey and RowKey already exists
-    existing_entity = table_service.get_entity('Records', name, roll_no)
-    
-    if not existing_entity:
-        # Create a new entity for the student data
+    # Initialize the TableService with the storage account name and key
+    table_service = TableService(account_name=storage_account_name, account_key=storage_account_key)
+
+    # Check if the entity with the given name and roll_no exists
+    try:
+        existing_entity = table_service.get_entity(TABLE_NAME, name, roll_no)
+    except azure.common.AzureMissingResourceHttpError as ex:
+        # If the entity does not exist, insert a new entity
         student_data = {
             'PartitionKey': name,
             'RowKey': roll_no,
             'Status': 'present'  # You can set the Status to 'present'
         }
+        table_service.insert_entity(TABLE_NAME, student_data)
+        return
 
-        # Insert the entity into the "Records" table
-        table_service.insert_entity('Records', student_data)
-
+    # If the entity exists, update its Status to 'present'
+    existing_entity['Status'] = 'present'
+    table_service.update_entity(TABLE_NAME, existing_entity)
 
 
 
