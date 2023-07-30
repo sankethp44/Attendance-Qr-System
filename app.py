@@ -6,6 +6,7 @@ from flask import Flask, render_template, request, redirect, session, jsonify, s
 import json
 from azure.storage.blob import BlobServiceClient
 import openpyxl,io
+from azure.common import AzureMissingResourceHttpError
 from urllib.parse import quote
 from azure.cosmosdb.table.tableservice import TableService
 from azure.cosmosdb.table.models import Entity
@@ -414,7 +415,7 @@ def save_student_data_to_table(name, roll_no):
     # Check if the entity with the given name and roll_no exists
     try:
         existing_entity = table_service.get_entity(TABLE_NAME, name, roll_no)
-    except azure.common.AzureMissingResourceHttpError as ex:
+    except AzureMissingResourceHttpError as ex:
         # If the entity does not exist, insert a new entity
         student_data = {
             'PartitionKey': name,
@@ -427,7 +428,6 @@ def save_student_data_to_table(name, roll_no):
     # If the entity exists, update its Status to 'present'
     existing_entity['Status'] = 'present'
     table_service.update_entity(TABLE_NAME, existing_entity)
-
 
 
 if __name__ == '__main__':
