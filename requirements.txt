@@ -1,0 +1,7 @@
+Flask==2.3.2
+Jinja2==3.1.2
+Werkzeug==2.3.6
+openpyxl==3.1.2
+azure-storage-blob==12.17.0
+azure-cosmosdb-table==1.0.6
+requests==2.31.0
