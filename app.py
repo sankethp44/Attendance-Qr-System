@@ -151,6 +151,10 @@ def logout():
     session.clear()
     return redirect('/')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 def authenticate_user(username, password, blob_service_client, container_name, excel_file_name):
     # Get the blob client for the credentials.xlsx file in the login container
     blob_client = blob_service_client.get_blob_client(container=container_name, blob=excel_file_name)
