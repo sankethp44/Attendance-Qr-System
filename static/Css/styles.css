@@ -30,15 +30,6 @@
   background-clip: text;
   color: transparent;
 }
-body {
-  margin: 0;
-  padding: 0;
-  background-image: url("https://lh3.google.com/u/0/d/16xmt1Fgz7ZnqvYroplJsriMtUzze_55b=w1920-h907-iv1");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: cover;
-}
 h1 
 {
     font-size: 24px;
@@ -478,4 +469,12 @@ p {
     font-size: 16px;
     text-align: center; /* Center the text horizontally */
     width: 100%; 
+}
+
+.background-image {
+  margin: 0;
+  padding: 0;
+  background-image: url("../images/Background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
