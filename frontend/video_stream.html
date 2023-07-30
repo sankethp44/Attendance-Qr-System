@@ -1,130 +1,175 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Video Stream</title>
+    <script src="js/jsqr.js"></script>
     <style>
-        /* Style for the popup overlay */
-        #popupOverlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999; /* Set a high z-index to appear on top of other elements */
-        }
+        body {
+      font-family: 'Ropa Sans', sans-serif;
+      color: #333;
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+      margin: 0 auto; 
+      text-align: center;
+    }
+    #loadingMessage {
+      text-align: center;
+      padding: 40px;
+      background-color: #eee;
+    }
 
-        /* Style for the scanner popup */
-        #scannerPopup {
-            width: 640px;
-            height: 480px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+    #canvas {
+      width: 100%;
+    }
 
-        /* Style for the video element */
-        #video {
-            width: 100%; /* Fit the video within the scannerPopup div */
-            height: 100%; /* Fit the video within the scannerPopup div */
-            object-fit: cover; /* Ensure the video covers the entire area */
-        }
+    #output {
+      margin-top: 20px;
+      background: #eee;
+      padding: 10px;
+      padding-bottom: 0;
+    }
+
+    #output div {
+      padding-bottom: 10px;
+      word-wrap: break-word;
+    }
+
+    #noQRFound {
+      text-align: center;
+    }
     </style>
     <link rel="stylesheet" type="text/css" href="Css/styles.css">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='Css/styles.css') }}">
-    <script src="js/jsqr.js"></script>
+</head>
 </head>
 <body class="background-image">
-    <div id="popupOverlay">
-        <div id="scannerPopup">
-            <video id="video" autoplay></video>
+    <p><span class="fancy1">Scanner</span></p>
+    <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
+    <canvas id="canvas" hidden></canvas>
+    <div id="output" hidden>
+        <div id="outputMessage">No QR code detected.</div>
+        <div hidden><b>Data:</b> <span id="outputData"></span></div>
+      </div>
+      <form action="/scanner" method="post" id="scannerForm">
+        <!-- This will hold the scanned QR code data -->
+        <input type="hidden" name="data" id="qrCodeData">
+    </form>
             <div class="button-container">
                 <button class="my-button" onclick="closeScannerPopup()">Cancel</button>
                 <button class="my-button" onclick="downloadRecords()">Download Records</button>
             </div>
-        </div>
-    </div>
-    <script type="text/javascript" src="../jsQR-master/docs/jsQR.js"></script>
-    <script>
-        // JavaScript code for opening the scanner and handling scanned data
-        function openScanner() {
-            // Check if the browser supports media devices (camera access)
-            if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
-                // Access the camera and enable scanning
-                navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
-                    .then(function (stream) {
-                        // Create a video element to display the camera feed
-                        const videoElement = document.getElementById('video');
-                        videoElement.srcObject = stream;
-                        videoElement.play();
-
-                        // Create a new QR code scanner
-                        const qrScanner = new QrScanner(videoElement, result => {
-                            // Handle the scanned QR code data
-                            handleScannedData(result);
-                            qrScanner.stop();
-                            videoElement.srcObject = null; // Stop the video stream
-                            closeScannerPopup();
+        
+            <script>
+                var video = document.createElement("video");
+                var canvasElement = document.getElementById("canvas");
+                var canvas = canvasElement.getContext("2d");
+                var loadingMessage = document.getElementById("loadingMessage");
+                var outputContainer = document.getElementById("output");
+                var outputMessage = document.getElementById("outputMessage");
+                var outputData = document.getElementById("outputData");
+            
+                function drawLine(begin, end, color) {
+                  canvas.beginPath();
+                  canvas.moveTo(begin.x, begin.y);
+                  canvas.lineTo(end.x, end.y);
+                  canvas.lineWidth = 4;
+                  canvas.strokeStyle = color;
+                  canvas.stroke();
+                }
+            
+                const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        // Use facingMode: environment to attempt to get the back camera on mobile devices
+        if (isMobileDevice) {
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: { exact: "environment" } } })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                    video.setAttribute("playsinline", true); // required to tell iOS Safari we don't want fullscreen
+                    video.play();
+                    requestAnimationFrame(tick);
+                })
+                .catch(function(error) {
+                    // If the back camera is not available, fall back to any available camera
+                    navigator.mediaDevices.getUserMedia({ video: true })
+                        .then(function(stream) {
+                            video.srcObject = stream;
+                            video.setAttribute("playsinline", true); // required to tell iOS Safari we don't want fullscreen
+                            video.play();
+                            requestAnimationFrame(tick);
+                        })
+                        .catch(function(error) {
+                            console.error('Error accessing camera:', error);
                         });
-
-                        // Start the scanning process
-                        qrScanner.start();
-                    })
-                    .catch(function (error) {
-                        console.error('Error accessing camera:', error);
-                    });
-            } else {
-                alert('Your browser does not support camera access. Please use a modern browser to access this feature.');
-            }
-        }
-
-        // Function to close the scanner popup and return to HomePage.html
-        function closeScannerPopup() {
-            // Redirect back to the HomePage.html
-            window.location.href = "{{ url_for('HomePage') }}";
-        }
-
-        function handleScannedData(result) {
-            try {
-                // Parse the JSON data from the scanned QR code
-                const qrData = JSON.parse(result);
-
-                // Send the scanned data to the Flask server using AJAX
-                $.ajax({
-                    type: "POST",
-                    url: "/scanner",
-                    data: JSON.stringify(qrData),
-                    contentType: "application/json",
-                    success: function (response) {
-                        alert(response.message);
-                    },
-                    error: function (error) {
-                        alert("Error processing QR code data: " + error.statusText);
-                    }
                 });
-            } catch (error) {
-                console.error("Error parsing QR code data:", error);
-            }
+        } else {
+            // For non-mobile devices, simply use the default video: true constraint
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                    video.setAttribute("playsinline", true); // required to tell iOS Safari we don't want fullscreen
+                    video.play();
+                    requestAnimationFrame(tick);
+                })
+                .catch(function(error) {
+                    console.error('Error accessing camera:', error);
+                });
         }
-
-        // Call the openScanner function when the page is loaded
-        document.addEventListener("DOMContentLoaded", function () {
-            openScanner();
-        });
-        function downloadRecords() {
-            // Redirect to the Flask route to download the records
-            window.location.href = "{{ url_for('download_records') }}";
-        }
-    </script>
-</body>
-</html>
+            
+                function tick() {
+                  loadingMessage.innerText = "⌛ Loading video..."
+                  if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                    loadingMessage.hidden = true;
+                    canvasElement.hidden = false;
+                    outputContainer.hidden = false;
+            
+                    canvasElement.height = video.videoHeight;
+                    canvasElement.width = video.videoWidth;
+                    canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+                    var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+                    var code = jsQR(imageData.data, imageData.width, imageData.height, {
+                      inversionAttempts: "dontInvert",
+                    });
+                    if (code) {
+                      drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
+                      drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
+                      drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
+                      drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
+                      outputMessage.hidden = true;
+                      outputData.parentElement.hidden = false;
+                      outputData.innerText = code.data;
+                      sendScannedData(code.data); // Send the data to Flask
+                    // Show confirmation message
+                    window.alert("Recorded QR code as document!");
+                    } else {
+                      outputMessage.hidden = false;
+                      outputData.parentElement.hidden = true;
+                    }
+                  }
+                  requestAnimationFrame(tick);
+                }
+        
+                function downloadRecords() {
+                    // Redirect to the Flask route to download the records
+                    window.location.href = "{{ url_for('download_records') }}";
+                }
+        
+                // Function to close the scanner popup and return to HomePage.html
+                function closeScannerPopup() {
+                    // Redirect back to the HomePage.html
+                    window.location.href = "{{ url_for('HomePage') }}";
+                }
+        
+                function sendScannedData(data) 
+                {
+                    // Set the scanned QR code data to the input field
+                    document.getElementById("qrCodeData").value = data;
+        
+                    // Submit the form to the Flask route for processing
+                    document.getElementById("scannerForm").submit();
+                }
+        
+            </script>
+        </body>
+        </html>

@@ -1,5 +1,6 @@
 import logging
 import traceback
+from azure.cosmosdb.table.tableservice import TableService
 from email.message import EmailMessage
 from flask import Flask, render_template, request, redirect, session, jsonify, send_file
 import json
@@ -30,7 +31,8 @@ storage_account_key = 'xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTpp
 container_name = 'login'
 excel_file_name = 'credentials.xlsx'
 excel_file_name1 = 'studentform.xlsx'
-
+TABLE_NAME = "Records"
+table_service = TableService(account_name=storage_account_name, account_key=storage_account_key)
 def save_student_data_to_excel(name, roll_no, email):
     # Replace with your Azure Table storage account connection string
     connection_string = "DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net"
@@ -315,24 +317,6 @@ def sendmail():
 #End of email
 
 
-@app.route('/scanner', methods=['POST'])
-def handle_scanner_data():
-    if request.method == 'POST':
-        qr_data = json.loads(request.data)
-        name = qr_data.get('name', '')
-        roll_no = qr_data.get('roll_no', '')
-        email = qr_data.get('email', '')
-        status = "Present"
-
-        # Save the data to the Excel file
-        save_student_data_to_excel1(name, roll_no, email, status)
-
-        # Send a response back to the frontend
-        response_data = {"status": "success", "message": "QR code data processed successfully!"}
-        return jsonify(response_data)
-
-    # Handle other HTTP methods (if needed)
-    return jsonify({"status": "error", "message": "Invalid request method."}), 405
 
 # Function to fetch student data from Azure Table and save it to Excel
 
@@ -352,14 +336,14 @@ def save_student_data_to_excel2():
     worksheet = workbook.active
 
     # Write the headers
-    headers = ["Name", "Roll No", "Email", "Status"]
+    headers = ["Name", "Roll No", "Status"]
     for col_num, header in enumerate(headers, 1):
         cell = worksheet.cell(row=1, column=col_num, value=header)
 
     # Write the student data to the worksheet
     row_num = 2
     for student in entities:
-        student_data = [student.PartitionKey, student.RowKey, student.Email, student.Status]
+        student_data = [student.PartitionKey, student.RowKey, student.Status]
         for col_num, data in enumerate(student_data, 1):
             cell = worksheet.cell(row=row_num, column=col_num, value=data)
         row_num += 1
@@ -382,7 +366,7 @@ def download_records():
     return send_file(
         excel_data,
         as_attachment=True,
-        attachment_filename='Records.xlsx',
+        download_name='Records.xlsx',
         mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     )
 
@@ -395,6 +379,52 @@ def home_page():
 @app.route('/video_stream')
 def video_stream_page():
     return render_template('video_stream.html')
+
+
+@app.route('/scanner', methods=['POST'])
+def handle_scanner_data():
+    if request.method == 'POST':
+        qr_data = request.form['data']
+        name, roll_no = qr_data.split(':')  # Assuming the data is in the format "name:roll_no"
+
+        # Save the student data to the Azure Table
+        save_student_data_to_table(name, roll_no)
+
+        # Show confirmation message using JavaScript alert
+        return render_template('video_stream.html')
+
+    # Handle other HTTP methods (if needed)
+    return "Invalid request method.", 405
+
+def is_duplicate(name, roll_no):
+    # Initialize the TableService with the storage account name and key
+    table_service = TableService(account_name=storage_account_name, account_key=storage_account_key)
+
+    # Query the table to check if the roll_no already exists
+    query_filter = f"PartitionKey eq '{name}' and RowKey eq '{roll_no}'"
+    entities = table_service.query_entities(TABLE_NAME, filter=query_filter)
+
+    # If any entities are found, then it is a duplicate QR code
+    return any(entities)
+
+def save_student_data_to_table(name, roll_no):
+    # Check if the entity with the given PartitionKey and RowKey already exists
+    existing_entity = table_service.get_entity('Records', name, roll_no)
+    
+    if not existing_entity:
+        # Create a new entity for the student data
+        student_data = {
+            'PartitionKey': name,
+            'RowKey': roll_no,
+            'Status': 'present'  # You can set the Status to 'present'
+        }
+
+        # Insert the entity into the "Records" table
+        table_service.insert_entity('Records', student_data)
+    else:
+        # Handle the case when the entity already exists
+        print("Entity already exists:", existing_entity)
+
 
 
 if __name__ == '__main__':
