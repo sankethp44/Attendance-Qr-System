@@ -270,7 +270,7 @@ def send_email(smtp_username, smtp_password, sender_email, receiver_email, subje
 def sendmail():
     # Replacing with the SMTP email credentials
     smtp_username = 'spalaksha@gmail.com'
-    smtp_password = 'hicqrmqyaiffmtwq'
+    smtp_password = 'bpthefuurfbbnzbx'
     sender_email = 'spalaksha@gmail.com'
 
     # Fetching student data and QR code URLs from Azure Table storage
