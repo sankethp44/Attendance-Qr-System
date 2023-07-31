@@ -513,7 +513,7 @@ p {
 @media (max-width: 600px) {
 .student-icon {
   font-size: 75px; /* You can adjust the size as needed */
-  margin-left: 75px;
+  margin-right: 75px;
 }
 }
 
