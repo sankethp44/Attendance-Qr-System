@@ -472,7 +472,7 @@ p {
 
 @media (max-width: 600px) {
   .icon-container {
-    margin-top: 60px;
+    margin-top: 160px;
     margin-left: 75px;
   }
 }
@@ -481,7 +481,7 @@ p {
 .student-icon {
   display:flex;
   font-size: 75px; /* You can adjust the size as needed */
-  margin-right: 75px;
+
 }
 }
 
@@ -533,7 +533,6 @@ p {
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 0 auto 20px; /* Center the heading horizontally and add margin below it */
 }
 }
 
@@ -565,15 +564,12 @@ p {
 @media (max-width: 600px) {
 .input-group {
   display: flex;
-  align-items: center;
-  justify-content: center;
   grid-template-columns: 70px 1fr;
 }
 }
 
 @media (max-width: 600px) {
   .login-container {
-    text-align: center;
     padding: 20px;
     width: fit-content; /* Set the container width to fit its content */
     position: absolute; /* Set the position to absolute */
