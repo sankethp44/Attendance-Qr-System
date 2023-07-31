@@ -286,7 +286,6 @@ p {
   color: transparent;
 }
 
-
 h1 
 {
     font-size: 24px;
@@ -483,8 +482,8 @@ p {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center; 
+  height: 100vh;
 }
-
 
 /* Default styles for headings */
 .heading {
@@ -516,14 +515,14 @@ p {
 }
 @media (max-width: 600px) {
 .student-icon {
-  font-size: 25px; /* You can adjust the size as needed */
+  font-size: 75px; /* You can adjust the size as needed */
   margin-right: 75px;
 }
 }
 
 @media (max-width: 600px) {
 .student-icon1 {
-  font-size: 25px; /* You can adjust the size as needed */
+  font-size: 75px; /* You can adjust the size as needed */
   margin-left: 175px;
 }
 }
@@ -554,7 +553,7 @@ p {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center; 
-
+  height: 100vh;
 }
 }
 @media (max-width: 600px) {
