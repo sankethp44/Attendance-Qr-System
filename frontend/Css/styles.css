@@ -515,7 +515,7 @@ p {
 }
 
 /* Media query for screens with a maximum width of 768px (typical for mobile devices) */
-@media (max-width: 768px) {
+@media (max-width: 270px) {
   .heading {
     margin-left: 0; /* Remove the left margin */
     display: block; /* Change display to block to stack the headings vertically */
@@ -524,7 +524,7 @@ p {
   }
 }
 /* Media query for screens with a maximum width of 768px (typical for mobile devices) */
-@media (max-width: 768px) {
+@media (max-width: 270px) {
   .heading1 {
     margin-left: 320px; /* Remove the left margin */
     display: block; /* Change display to block to stack the headings vertically */
@@ -533,7 +533,7 @@ p {
   }
 }
 
-@media (max-width: 300px) {
+@media (max-width: 270px) {
   .icon-container {
     width: 100%;
     margin-top: 40px; /* Adjust the top margin for mobile */
@@ -541,7 +541,7 @@ p {
   }
 }
 
-@media (max-width: 300px) {
+@media (max-width: 270px) {
 .icon-container {
   width: 100%;
   margin-top: 260px; 
