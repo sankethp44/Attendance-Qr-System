@@ -523,3 +523,10 @@ p {
     display: block; /* Change display to block to stack the headings vertically */
   }
 }
+/* Media query for screens with a maximum width of 768px (typical for mobile devices) */
+@media (max-width: 768px) {
+  .heading1 {
+    margin-left: 0; /* Remove the left margin */
+    display: block; /* Change display to block to stack the headings vertically */
+  }
+}
