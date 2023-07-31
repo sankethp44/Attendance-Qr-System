@@ -505,13 +505,14 @@ p {
 
 @media (max-width: 600px) {
   .icon-container {
-    margin-top: 90px;
+    margin-top: 60px;
     margin-left: 75px;
   }
 }
 
 @media (max-width: 600px) {
 .student-icon {
+  display:block;
   font-size: 75px; /* You can adjust the size as needed */
   margin-right: 75px;
 }
@@ -520,7 +521,7 @@ p {
 @media (max-width: 600px) {
 .student-icon1 {
   font-size: 75px; /* You can adjust the size as needed */
-  margin-left: 155px;
+  margin-left: 180px;
 }
 }
 
