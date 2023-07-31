@@ -490,11 +490,10 @@ p {
 @media (max-width: 600px) {
 .student-icon1 {
   font-size: 75px; /* You can adjust the size as needed */
-  margin-left: 180px;
+  margin-left: 93px;
   display: inline;
 }
 }
-
 
 
 @media (max-width: 600px) {
@@ -541,7 +540,7 @@ p {
 
 @media (max-width: 600px) {
   .form-label {
-    font-size: 48px;
+    font-size: 28px;
     margin-bottom: 10px;
     margin-right: 50px;
     font-weight: bold;
@@ -549,13 +548,13 @@ p {
     background-clip: text; /* Apply gradient to the text only */
     -webkit-background-clip: text; /* For Safari support */
     color: transparent; /* Make the text transparent */
-    line-height: 5.3;
+    line-height: 2.3;
    
 }
 }
 @media (max-width: 600px) {
 .form-label1 {
-  font-size: 48px;
+  font-size: 28px;
   margin-bottom: 10px;
   font-weight: bold;
   background-image: linear-gradient(45deg, #bc1e43, #1c657d);
@@ -604,7 +603,7 @@ p {
     color: #FFFFFF;
     cursor: pointer;
     font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
-    font-size: 36px;
+    font-size: 20px;
     font-weight: 700;
     line-height: 24px;
     opacity: 1;
