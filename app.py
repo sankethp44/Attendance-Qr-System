@@ -1,32 +1,20 @@
 import logging
 import traceback
-from azure.cosmosdb.table.tableservice import TableService
-from email.message import EmailMessage
-from flask import Flask, render_template, request, redirect, session, jsonify, send_file
-import json
+from flask import Flask, render_template, request, redirect, session, send_file
 from azure.storage.blob import BlobServiceClient
-import openpyxl,io
-from azure.common import AzureMissingResourceHttpError
-from urllib.parse import quote
+import openpyxl
 from azure.cosmosdb.table.tableservice import TableService
-from azure.cosmosdb.table.models import Entity
 import requests
 from azure.common import AzureMissingResourceHttpError
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.application import MIMEApplication
-from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
-from email import encoders
-import os
 from io import BytesIO
 from email.mime.image import MIMEImage
-from azure.storage.blob import BlobServiceClient
 
 app = Flask(__name__)
 app.secret_key = 'sanketh2341562'
-# Replace with your actual Azure Storage account credentials
+# Replacing with actual Azure Storage account credentials
 storage_account_name = 'blobdatabase234'
 storage_account_key = 'xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw=='
 container_name = 'login'
@@ -34,12 +22,13 @@ excel_file_name = 'credentials.xlsx'
 excel_file_name1 = 'studentform.xlsx'
 TABLE_NAME = "Records"
 table_service = TableService(account_name=storage_account_name, account_key=storage_account_key)
+
 def save_student_data_to_excel(name, roll_no, email):
-    # Replace with your Azure Table storage account connection string
+    # Replace with Azure Table storage account connection string
     connection_string = "DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net"
     table_service = TableService(connection_string=connection_string)
 
-    # Define the name of your Azure Table
+    # Define the name of Azure Table
     table_name = "studentdata1"
 
     # Create the table if it doesn't exist
@@ -53,7 +42,7 @@ def save_student_data_to_excel(name, roll_no, email):
         "Email": email,
     }
 
-    # Insert the entity into the Azure Table
+    # Inserting the entity into the Azure Table
     table_service.insert_or_replace_entity(table_name, student_entity)
 
 # Your existing functions and routes here...
@@ -246,7 +235,6 @@ def generate_qr_codes():
         # You can return an error message or redirect to an error page
         return render_template('form.html')
 
-from email.message import EmailMessage
 
 # ... (other code remains the same) ...
 
