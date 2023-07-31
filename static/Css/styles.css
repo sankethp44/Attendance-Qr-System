@@ -528,7 +528,7 @@ p {
 @media (max-width: 600px) {
   .login-heading {
     font-family: 'Montserrat', sans-serif;
-    font-size: 58px;
+    font-size: 46px;
     color: #fff;
     display: inline-block;
     background: linear-gradient(45deg, #ed144e, #355661);
