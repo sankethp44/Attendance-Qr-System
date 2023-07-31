@@ -506,3 +506,20 @@ p {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+/* Default styles for headings */
+.heading {
+  margin-left: 220px;
+  display: inline;
+}
+.heading1 {
+  margin-left: 320px;
+  display: inline;
+}
+/* Media query for screens with a maximum width of 768px (typical for mobile devices) */
+@media (max-width: 768px) {
+  .heading {
+    margin-left: 0; /* Remove the left margin */
+    display: block; /* Change display to block to stack the headings vertically */
+  }
+}

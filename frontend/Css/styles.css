@@ -10,14 +10,7 @@
   font-size: 148px; /* You can adjust the size as needed */
 
 }
-.icon-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 160px; 
-  margin-left: 330px; /* Adjust the margin as needed */
- 
-}
+
 .gradient-icon {
   background: linear-gradient(45deg, #6e4e39, rgb(31, 78, 126));
   -webkit-background-clip: text;
@@ -272,13 +265,12 @@ p {
 
 }
 .icon-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
   margin-top: 160px; 
   margin-left: 330px; /* Adjust the margin as needed */
  
 }
+
+
 .gradient-icon {
   background: linear-gradient(45deg, #6e4e39, rgb(31, 78, 126));
   -webkit-background-clip: text;
@@ -504,4 +496,29 @@ p {
   background-image: url("../images/Background.png");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/* Default styles for headings */
+.heading {
+  margin-left: 240px;
+  display: inline;
+}
+.heading1 {
+  margin-left: 320px;
+  display: inline;
+}
+
+/* Media query for screens with a maximum width of 768px (typical for mobile devices) */
+@media (max-width: 768px) {
+  .heading {
+    margin-left: 0; /* Remove the left margin */
+    display: block; /* Change display to block to stack the headings vertically */
+  }
+}
+
+@media (max-width: 768px) {
+  .icon-container {
+    margin-top: 40px; /* Adjust the top margin for mobile */
+    margin-left: 0; /* Remove the left margin for mobile */
+  }
 }
