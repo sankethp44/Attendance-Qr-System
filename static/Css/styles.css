@@ -518,22 +518,21 @@ p {
 }
 
 /* Media query for screens with a maximum width of 279px (typical for mobile devices) */
-@media (max-width: 270px) {
+@media (max-width: 600px) {
   .heading {
     margin-left: 240px; 
     display: inline;
     width: 100%;
   }
 }
-
 /* Media query for screens with a maximum width of 270px (typical for mobile devices) */
-@media (max-width: 270px) {
+@media (max-width: 600px) {
   .heading1 {
     margin-left: 220px; 
     display: inline;
   }
 }
-@media (max-width: 270px) {
+@media (max-width: 600px) {
   .icon-container {
     width: 100%;
     margin-top: 40px; /* Adjust the top margin for mobile */
@@ -541,7 +540,7 @@ p {
   }
 }
 
-@media (max-width: 270px) {
+@media (max-width: 600px) {
 .form-label6 {
   font-size: 49px;
   margin-bottom: 10px;
@@ -553,3 +552,12 @@ p {
   width: fit-content;
 }
 }
+@media (max-width: 600px) {
+  .background-image {
+    background-image: url("../images/backgroundmobile.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+  
+  }
+  }
