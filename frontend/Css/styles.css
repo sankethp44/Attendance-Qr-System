@@ -96,17 +96,6 @@ h1
     margin-left: -50px; /* Adjust this value to half of the container width */
 }
 
-.login-heading {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 48px;
-    color: #fff;
-    display: inline-block;
-    background: linear-gradient(45deg, #ed144e, #355661);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 0 auto 20px; /* Center the heading horizontally and add margin below it */
-}
 
 .form-label {
     font-size: 18px;
@@ -499,7 +488,7 @@ p {
 @media (max-width: 600px) {
   .heading {
     font-size: medium;
-    margin-left: 0px; 
+    margin-left: 20px; 
     display: inline;
     width: 100%;
   }
@@ -515,22 +504,22 @@ p {
 }
 @media (max-width: 600px) {
 .student-icon {
-  font-size: 75px; /* You can adjust the size as needed */
-  margin-right: 75px;
+  font-size: 275px; /* You can adjust the size as needed */
+  margin-right: 55px;
 }
 }
 
 @media (max-width: 600px) {
 .student-icon1 {
-  font-size: 75px; /* You can adjust the size as needed */
-  margin-left: 175px;
+  font-size: 275px; /* You can adjust the size as needed */
+  margin-left: 155px;
 }
 }
 
 @media (max-width: 600px) {
   .icon-container {
-    margin-top: 40px;
-    margin-left: 100px;
+    margin-top: 70px;
+    margin-left: 35px;
   }
 }
 
@@ -561,5 +550,77 @@ p {
   background-color: #236ca4;
   color: white;
   margin-left: 3%;
+}
+}
+@media (max-width: 600px) {
+.login-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 74px;
+  color: #fff;
+  display: inline-block;
+  background: linear-gradient(45deg, #ed144e, #355661);
+  border-radius: 40px;
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto 40px; /* Center the heading horizontally and add margin below it */
+}
+}
+
+@media (max-width: 600px) {
+.form-label {
+  font-size: 38px;
+  margin-bottom: 18px;
+  margin-right: 70px;
+  font-weight: bold;
+  background-image: linear-gradient(45deg, #bc1e43, #1c657d);
+  background-clip: text; /* Apply gradient to the text only */
+  -webkit-background-clip: text; /* For Safari support */
+  color: transparent; /* Make the text transparent */
+  line-height: 6.3;
+}
+}
+@media (max-width: 600px) {
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 150px 1fr;
+}
+}
+
+@media (max-width: 600px) {
+.input-group .form-label {
+  margin-right: 10px;
+}
+}
+@media (max-width: 600px) {
+.input-group .form-label1 {
+  margin-right: 10px;
+}
+}
+@media (max-width: 600px) {
+.my-button {
+  background: linear-gradient(45deg, #14ed4a, #355661);
+  border-radius: 999px;
+  box-shadow: #5E5DF0 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+  margin-top: 37px;
+  margin-right: 30px;
+  margin-left: 30px;
 }
 }
