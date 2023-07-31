@@ -526,7 +526,13 @@ p {
   }
 }
 
-
+/* Media query for screens with a maximum width of 270px (typical for mobile devices) */
+@media (max-width: 270px) {
+  .heading1 {
+    margin-left: 220px; 
+    display: inline;
+  }
+}
 @media (max-width: 270px) {
   .icon-container {
     width: 100%;
@@ -544,6 +550,6 @@ p {
   background-clip: text; /* Apply gradient to the text only */
   -webkit-background-clip: text; /* For Safari support */
   color: transparent; /* Make the text transparent */
-  width: 100%;
+  width: fit-content;
 }
 }
