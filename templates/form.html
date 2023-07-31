@@ -28,7 +28,7 @@
             <input type="email" id="email" name="email" required>
         </div>
         <div class="button-container">
-            <button class="my-button" type="submit" id="submit-button">Submit</button>
+            <button class="my-button" type="submit" id="submit-button" onclick="handleSubmitButtonClick">Submit</button>
         
     </form>
     <form method="post" action="{{ url_for('generate_qr_codes') }}">
