@@ -6,14 +6,6 @@
     padding: 0;
 }
 
-.icon-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 160px; 
-  margin-left: 330px; /* Adjust the margin as needed */
- 
-}
 .gradient-icon {
   background: linear-gradient(45deg, #6e4e39, rgb(31, 78, 126));
   -webkit-background-clip: text;
@@ -56,6 +48,7 @@ h1
   margin-right: 30px;
   margin-left: 30px;
 }
+
 /* Add a black background color to the top navigation */
 @supports (background-clip: text) or (-webkit-background-clip: text) {
 .topnav {
@@ -135,9 +128,9 @@ h1
   background-clip: text; /* Apply gradient to the text only */
   -webkit-background-clip: text; /* For Safari support */
   color: transparent; /* Make the text transparent */
-  width: fit-content;
-  
+  width: fit-content; 
 }
+
 .form-label4 {
   font-weight: bold;
   background-image: linear-gradient(45deg, #bc1e43, #1c657d);
@@ -156,6 +149,26 @@ h1
     -webkit-background-clip: text; /* For Safari support */
     color: transparent; /* Make the text transparent */
     line-height: 2.3;
+}
+.form-label11 {
+  font-size: 60px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  background-image: linear-gradient(45deg, #3547c0, #2c5866);
+  background-clip: text; /* Apply gradient to the text only */
+  -webkit-background-clip: text; /* For Safari support */
+  color: transparent; /* Make the text transparent */
+  line-height: 2.3;
+}
+.form-label12 {
+  font-size: 30px;
+  margin-top: 50px;
+  
+  background-image: linear-gradient(45deg, #35c0b7, #2c5866);
+  background-clip: text; /* Apply gradient to the text only */
+  -webkit-background-clip: text; /* For Safari support */
+  color: transparent; /* Make the text transparent */
+  line-height: 2.3;
 }
 .input-group {
     display: flex;
@@ -220,7 +233,6 @@ p {
       background-clip: text;
     }
   }
-
   .buttons-container {
     display: flex;
     justify-content: space-between;
@@ -255,13 +267,11 @@ p {
   margin-left: 520px;
 }
 .icon-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
   margin-top: 160px; 
   margin-left: 330px; /* Adjust the margin as needed */
  
 }
+
 
 .gradient-icon {
   background: linear-gradient(45deg, #6e4e39, rgb(31, 78, 126));
@@ -275,13 +285,7 @@ p {
   background-clip: text;
   color: transparent;
 }
-.background-image 
-{
-    background-image: url('../images/background.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
-}
+
 
 h1 
 {
@@ -383,17 +387,7 @@ h1
     line-height: 5.3;
    
 }
-.form-label6 {
-  font-size: 49px;
-  margin-bottom: 10px;
-  font-weight: bold;
-  background-image: linear-gradient(45deg, #1ebc30, #d63f4c);
-  background-clip: text; /* Apply gradient to the text only */
-  -webkit-background-clip: text; /* For Safari support */
-  color: transparent; /* Make the text transparent */
-  width: fit-content;
-  
-}
+
 .form-label4 {
   font-weight: bold;
   background-image: linear-gradient(45deg, #bc1e43, #1c657d);
@@ -424,7 +418,6 @@ h1
   justify-content: center;
   margin-top: 10px; /* Add some top margin for spacing */
 }
-
 .input-group .form-label {
     margin-right: 10px;
 }
@@ -467,26 +460,7 @@ p {
       line-height: 2.3;
     }
   }
-  .form-label11 {
-    font-size: 60px;
-    margin-bottom: 10px;
-    font-weight: bold;
-    background-image: linear-gradient(45deg, #3547c0, #2c5866);
-    background-clip: text; /* Apply gradient to the text only */
-    -webkit-background-clip: text; /* For Safari support */
-    color: transparent; /* Make the text transparent */
-    line-height: 2.3;
-  }
-  .form-label12 {
-    font-size: 30px;
-    margin-top: 50px;
-    
-    background-image: linear-gradient(45deg, #35c0b7, #2c5866);
-    background-clip: text; /* Apply gradient to the text only */
-    -webkit-background-clip: text; /* For Safari support */
-    color: transparent; /* Make the text transparent */
-    line-height: 2.3;
-  }
+
   .buttons-container {
     display: flex;
     justify-content: space-between;
@@ -505,14 +479,16 @@ p {
 }
 
 .background-image {
-  background-image: url("../images/Background.png");
+  background-image: url("../images/backgroundmobile.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center; 
 }
+
 
 /* Default styles for headings */
 .heading {
-  margin-left: 220px;
+  margin-left: 240px;
   display: inline;
 }
 .heading1 {
@@ -540,25 +516,25 @@ p {
 }
 @media (max-width: 600px) {
 .student-icon {
-  margin-left:25px;
-  font-size: 80px; /* You can adjust the size as needed */
+  font-size: 25px; /* You can adjust the size as needed */
+  margin-right: 75px;
 }
 }
 
 @media (max-width: 600px) {
-  .student-icon1 {
-    font-size: 175px; /* You can adjust the size as needed */
-    margin-left: 75px;
-  }
-  }
+.student-icon1 {
+  font-size: 25px; /* You can adjust the size as needed */
+  margin-left: 175px;
+}
+}
 
-  @media (max-width: 600px) {
-    .icon-container {
-      margin-top: 40px;
-      margin-left: 100px;
-    }
+@media (max-width: 600px) {
+  .icon-container {
+    margin-top: 40px;
+    margin-left: 100px;
   }
-  
+}
+
 @media (max-width: 600px) {
 .form-label6 {
   font-size: 49px;
@@ -571,21 +547,21 @@ p {
   width: fit-content;
 }
 }
-@media (max-width: 600px) {
-  .background-image {
-    background-image: url("../images/backgroundmobile.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center; 
-  
-  }
-  }
 
-  @media (max-width: 600px) {
-    /* Add a color to the active/current link */
-    .topnav a.active {
-     background-color: #236ca4;
-     color: white;
-     margin-left: 3%;
-   }
-   }
+@media (max-width: 600px) {
+.background-image {
+  background-image: url("../images/backgroundmobile.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; 
+
+}
+}
+@media (max-width: 600px) {
+ /* Add a color to the active/current link */
+ .topnav a.active {
+  background-color: #236ca4;
+  color: white;
+  margin-left: 3%;
+}
+}

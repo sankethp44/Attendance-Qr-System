@@ -285,13 +285,7 @@ p {
   background-clip: text;
   color: transparent;
 }
-.background-image 
-{
-    background-image: url('../images/background.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
-}
+
 
 h1 
 {
@@ -491,6 +485,7 @@ p {
   background-position: center; 
 }
 
+
 /* Default styles for headings */
 .heading {
   margin-left: 240px;
@@ -522,6 +517,7 @@ p {
 @media (max-width: 600px) {
 .student-icon {
   font-size: 25px; /* You can adjust the size as needed */
+  margin-right: 75px;
 }
 }
 
@@ -535,6 +531,7 @@ p {
 @media (max-width: 600px) {
   .icon-container {
     margin-top: 40px;
+    margin-left: 100px;
   }
 }
 
