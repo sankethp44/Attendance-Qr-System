@@ -80,7 +80,11 @@ def delete_all_rows():
     for entity in entities:
         table_service.delete_entity('studentdata1', entity.PartitionKey, entity.RowKey)
 
-    # Replacing with the Azure Blob storage account connection string
+    entities = table_service.query_entities('Records')
+    # Delete each entity (row) from the table
+    for entity in entities:
+        table_service.delete_entity('Records', entity.PartitionKey, entity.RowKey)
+
     # Replacing with the name of your container containing the QR codes
     container_name = "qrcodes"
 
@@ -338,7 +342,9 @@ def save_student_data_to_excel2():
 def download_records():
     # Geting the Excel data from the "Records" table in Azure
     excel_data = save_student_data_to_excel2()
-
+    if excel_data is None:
+        # If the table is empty, provide a message saying Table is empty
+        return "The table is empty. No records to display."
     # Sending the Excel data as a downloadable file to the user
     return send_file(
         excel_data,
