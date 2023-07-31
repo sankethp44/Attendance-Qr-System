@@ -331,17 +331,6 @@ h1
     color: white;
   }
 
-  .login-container {
-    text-align: center;
-    padding: 20px;
-    width: fit-content; /* Set the container width to fit its content */
-    position: absolute; /* Set the position to absolute */
-    top: 55%; /* Vertically align the container to the middle */
-    transform: translateY(-50%); /* Center it perfectly */
-    left: 43%; /* Horizontally align the container to the middle */
-    margin-left: -50px; /* Adjust this value to half of the container width */
-}
-
 .login-heading {
     font-family: 'Montserrat', sans-serif;
     font-size: 48px;
@@ -505,14 +494,14 @@ p {
 }
 @media (max-width: 600px) {
 .student-icon {
-  font-size: 275px; /* You can adjust the size as needed */
+  font-size: 95px; /* You can adjust the size as needed */
   margin-right: 55px;
 }
 }
 
 @media (max-width: 600px) {
 .student-icon1 {
-  font-size: 275px; /* You can adjust the size as needed */
+  font-size: 95px; /* You can adjust the size as needed */
   margin-left: 155px;
 }
 }
@@ -588,7 +577,18 @@ p {
   grid-template-columns: 150px 1fr;
 }
 }
-
+@media (max-width: 600px) {
+.login-container {
+  text-align: center;
+  padding: 20px;
+  width: fit-content; /* Set the container width to fit its content */
+  position: absolute; /* Set the position to absolute */
+  top: 55%; /* Vertically align the container to the middle */
+  transform: translateY(-50%); /* Center it perfectly */
+  left: 43%; /* Horizontally align the container to the middle */
+  margin-left: -50px; /* Adjust this value to half of the container width */
+}
+}
 @media (max-width: 600px) {
 .input-group .form-label {
   margin-right: 10px;
