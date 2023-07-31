@@ -70,27 +70,26 @@ def save_student_data_to_excel1(name, roll_no, email, status):
 
 @app.route('/delete_all_rows', methods=['POST'])
 def delete_all_rows():
-    # Connect to your Azure Table storage
+    # Connecting to the Azure Table storage
     table_service = TableService(connection_string='DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net')
 
-    # Get all entities from the table
+    # Geting all entities from the table
     entities = table_service.query_entities('studentdata1')
 
     # Delete each entity (row) from the table
     for entity in entities:
         table_service.delete_entity('studentdata1', entity.PartitionKey, entity.RowKey)
 
-    # Now, let's delete all QR codes from the "qrcode" container in Azure Blob storage
-    # Replace with your Azure Blob storage account connection string
+    # Replacing with the Azure Blob storage account connection string
     blob_connection_string = "DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net"
 
-    # Replace with the name of your container containing the QR codes
+    # Replacing with the name of your container containing the QR codes
     container_name = "qrcodes"
 
     # Initialize the BlobServiceClient using the connection string
     blob_service_client = BlobServiceClient.from_connection_string(blob_connection_string)
 
-    # Get a list of blobs in the "qrcode" container
+    # Getting a list of blobs in the "qrcode" container
     container_client = blob_service_client.get_container_client(container_name)
     blobs = container_client.list_blobs()
 
@@ -190,15 +189,13 @@ def submit_form():
         return render_template('form.html',submitted=submitted)
     
 #Start of email code
-#
-#
 # Function to fetch student data and QR code URLs from Azure Table storage
 def fetch_student_data_from_table():
-    # Replace with your Azure Table storage account connection string
+    # Replacing with your Azure Table storage account connection string
     connection_string = "DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net"
     table_service = TableService(connection_string=connection_string)
 
-    # Replace with your Azure Table name
+    # Replacing with your Azure Table name
     table_name = "studentdata1"
 
     # Fetch all entities from the Azure Table
@@ -223,7 +220,7 @@ def fetch_student_data_from_table():
 @app.route('/generate_qr_codes', methods=['POST'])
 def generate_qr_codes():
     # Make a GET request to the Azure Function endpoint that generates QR codes
-    response = requests.get("https://qrcode111.azurewebsites.net/api/generateallqrcodes")  # Replace with the URL of your Azure Function
+    response = requests.get("https://qrcode111.azurewebsites.net/api/generateallqrcodes")  # Replacing with the URL of your Azure Function
     # Check the status code to determine if the request was successful
     if response.status_code == 200:
         # Render the form.html template with the success message
@@ -279,7 +276,7 @@ def send_email(smtp_username, smtp_password, sender_email, receiver_email, subje
 
 @app.route('/sendmail', methods=['POST'])
 def sendmail():
-    # Replace with your SMTP email credentials
+    # Replacing with the SMTP email credentials
     smtp_username = 'spalaksha@gmail.com'
     smtp_password = 'hicqrmqyaiffmtwq'
     sender_email = 'spalaksha@gmail.com'
@@ -312,7 +309,7 @@ def sendmail():
 # Function to fetch student data from Azure Table and save it to Excel
 
 def save_student_data_to_excel2():
-    # Replace with your Azure Table storage account connection string
+    # Replacing with the Azure Table storage account connection string
     connection_string = "DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net"
     table_service = TableService(connection_string=connection_string)
 

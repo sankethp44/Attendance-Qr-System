@@ -5,11 +5,7 @@
     margin: 0;
     padding: 0;
 }
-.student-icon {
 
-  font-size: 148px; /* You can adjust the size as needed */
-
-}
 .icon-container {
   display: flex;
   justify-content: flex-start;
@@ -544,7 +540,7 @@ p {
 }
 @media (max-width: 600px) {
 .student-icon {
-  margin-left:35px;
+  margin-left:25px;
   font-size: 80px; /* You can adjust the size as needed */
 }
 }
@@ -556,14 +552,13 @@ p {
   }
   }
 
-@media (max-width: 600px) {
-  .icon-container {
-    width: 100%;
-    margin-top: 40px; /* Adjust the top margin for mobile */
-    margin-left: 0; /* Remove the left margin for mobile */
+  @media (max-width: 600px) {
+    .icon-container {
+      margin-top: 40px;
+      margin-left: 100px;
+    }
   }
-}
-
+  
 @media (max-width: 600px) {
 .form-label6 {
   font-size: 49px;
