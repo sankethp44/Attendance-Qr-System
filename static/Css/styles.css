@@ -238,7 +238,7 @@ p {
 .student-icon {
 
   font-size: 148px; /* You can adjust the size as needed */
-
+  
 }
 .student-icon1 {
 
@@ -474,6 +474,7 @@ p {
   .icon-container {
     margin-top: 160px;
     margin-left: 75px;
+    display: inline;
   }
 }
 
@@ -481,6 +482,7 @@ p {
 .student-icon {
   display:flex;
   font-size: 75px; /* You can adjust the size as needed */
+  display: inline;
 
 }
 }
@@ -489,6 +491,7 @@ p {
 .student-icon1 {
   font-size: 75px; /* You can adjust the size as needed */
   margin-left: 180px;
+  display: inline;
 }
 }
 
