@@ -487,23 +487,10 @@ p {
 @media (max-width: 600px) {
   .heading1 {
     font-size: medium;
-    margin-left: 25px; 
+    margin-left: 45px; 
     display: inline;
     width: 100%;
   }
-}
-@media (max-width: 600px) {
-.student-icon {
-  font-size: 95px; /* You can adjust the size as needed */
-  margin-right: 55px;
-}
-}
-
-@media (max-width: 600px) {
-.student-icon1 {
-  font-size: 95px; /* You can adjust the size as needed */
-  margin-left: 155px;
-}
 }
 
 @media (max-width: 600px) {
@@ -512,6 +499,22 @@ p {
     margin-left: 35px;
   }
 }
+
+@media (max-width: 600px) {
+.student-icon {
+  font-size: 35px; /* You can adjust the size as needed */
+  margin-right: 55px;
+}
+}
+
+@media (max-width: 600px) {
+.student-icon1 {
+  font-size: 35px; /* You can adjust the size as needed */
+  margin-left: 155px;
+}
+}
+
+
 
 @media (max-width: 600px) {
 .form-label6 {
@@ -549,10 +552,10 @@ p {
   color: #fff;
   display: inline-block;
   background: linear-gradient(45deg, #ed144e, #355661);
-  border-radius: 40px;
-  padding: 40px;
+  border-radius: 60px;
+  padding: 60px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 0 auto 40px; /* Center the heading horizontally and add margin below it */
+  margin: 0 auto 60px; /* Center the heading horizontally and add margin below it */
 }
 }
 
@@ -577,18 +580,20 @@ p {
   grid-template-columns: 150px 1fr;
 }
 }
+
 @media (max-width: 600px) {
 .login-container {
   text-align: center;
-  padding: 20px;
+  padding: 60px;
   width: fit-content; /* Set the container width to fit its content */
   position: absolute; /* Set the position to absolute */
-  top: 55%; /* Vertically align the container to the middle */
+  top: 35%; /* Vertically align the container to the middle */
   transform: translateY(-50%); /* Center it perfectly */
   left: 43%; /* Horizontally align the container to the middle */
   margin-left: -50px; /* Adjust this value to half of the container width */
 }
 }
+
 @media (max-width: 600px) {
 .input-group .form-label {
   margin-right: 10px;
