@@ -81,7 +81,7 @@
             
                 const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         
-        // Use facingMode: environment to attempt to get the back camera on mobile devices
+        // Using facingMode: environment to attempt to get the back camera on mobile devices
         if (isMobileDevice) {
             navigator.mediaDevices.getUserMedia({ video: { facingMode: { exact: "environment" } } })
                 .then(function(stream) {
@@ -140,7 +140,7 @@
                       outputData.parentElement.hidden = false;
                       outputData.innerText = code.data;
                       sendScannedData(code.data); // Send the data to Flask
-                    // Show confirmation message
+                    // Showing confirmation message
                     window.alert("Recorded QR code as document!");
                     } else {
                       outputMessage.hidden = false;
@@ -151,22 +151,22 @@
                 }
         
                 function downloadRecords() {
-                    // Redirect to the Flask route to download the records
+                    // Redirecting to the Flask route to download the records
                     window.location.href = "{{ url_for('download_records') }}";
                 }
         
                 // Function to close the scanner popup and return to HomePage.html
                 function closeScannerPopup() {
-                    // Redirect back to the HomePage.html
+                    // Redirecting back to the HomePage.html
                     window.location.href = "{{ url_for('HomePage') }}";
                 }
         
                 function sendScannedData(data) 
                 {
-                    // Set the scanned QR code data to the input field
+                    // Seting the scanned QR code data to the input field
                     document.getElementById("qrCodeData").value = data;
         
-                    // Submit the form to the Flask route for processing
+                    // Submiting the form to the Flask route for processing
                     document.getElementById("scannerForm").submit();
                 }
         

@@ -7,7 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@900&display=swap" rel="stylesheet"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 </head>
 <body class="background-image">
     
@@ -48,7 +49,7 @@
     });
     
     function handleSubmitButtonClick() {
-            // Show a confirmation dialog
+            // Showing a confirmation dialog
             const confirmed = confirm("Are you sure you want to submit the form?");
 
             // If the user confirms, submit the form
@@ -66,10 +67,10 @@
             fetch("/generate_qr_codes", { method: "POST" })
                 .then(response => {
                     if (response.ok) {
-                        // Display the success message as a JavaScript alert
+                        // Displaying the success message as a JavaScript alert
                         alert("Generated QR Code Successfully!");
                     } else {
-                        // Handle the case where there was an error
+                        // Handling the case where there was an error
                         alert("Error generating QR codes.");
                     }
                 })
@@ -78,7 +79,7 @@
                 });
         }
         function sendmail() {
-            // Show a confirmation dialog
+            // Showing a confirmation dialog
             const confirmed = confirm("Are you sure you want to send the mail?");
 
             // If the user confirms, submit the form

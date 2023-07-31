@@ -43,15 +43,15 @@
             }
         }
     
-        // Add event listeners to input fields to hide the error message
+        // Adding event listeners to input fields to hide the error message
         document.getElementById('username').addEventListener('input', hideErrorMessage);
         document.getElementById('password').addEventListener('input', hideErrorMessage);
         function cancel() {
-    // Reset the form fields
+    // Reseting the form fields
     document.getElementById('username').value = '';
     document.getElementById('password').value = '';
 
-    // Hide the error message
+    // Hiding the error message
     const errorMessage = document.getElementById('error-message');
     if (errorMessage) {
         errorMessage.style.display = 'none';

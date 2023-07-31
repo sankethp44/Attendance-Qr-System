@@ -272,25 +272,25 @@ def sendmail():
     smtp_password = 'hicqrmqyaiffmtwq'
     sender_email = 'spalaksha@gmail.com'
 
-    # Fetch student data and QR code URLs from Azure Table storage
+    # Fetching student data and QR code URLs from Azure Table storage
     qr_codes_data = fetch_student_data_from_table()
 
-    # Fetch the Blob Service Client
+    # Fetching the Blob Service Client
     blob_service_client = BlobServiceClient.from_connection_string("DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net")
     container_client = blob_service_client.get_container_client("qrcodes")
 
-    # Loop through the QR codes data and send emails to each student
+    # Looping through the QR codes data and send emails to each student
     for student_info in qr_codes_data:
         name = student_info['name']
         roll_no = student_info['roll_no']
         email = student_info['email']
         message = f"Dear {name},\n\nPlease download this QR code to receive attendance for tomorrow's Annual Day event.\n\nBest Regards,\nYour friend"
 
-        # Get the URL of the QR code image from Azure Blob Storage
+        # Geting the URL of the QR code image from Azure Blob Storage
         qr_code_url = container_client.get_blob_client(f"{name}_{roll_no}.png").url
-        # Send the email with the QR code URL as an attachment
+        # Sending the email with the QR code URL as an attachment
         send_email(smtp_username, smtp_password, sender_email, email, "Attendance QR Code", message, [qr_code_url])
-    # Render the form.html template with the success message
+    # Rendering the form.html template with the success message
     return render_template('form.html', message="Generated QR Codes Successfully! Check your email for the QR codes.")
 
 #End of email
@@ -304,22 +304,22 @@ def save_student_data_to_excel2():
     connection_string = "DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net"
     table_service = TableService(connection_string=connection_string)
 
-    # Define the name of your Azure Table
+    # Defining the name of your Azure Table
     table_name = "Records"
 
-    # Query all entities from the Azure Table
+    # Querying all entities from the Azure Table
     entities = table_service.query_entities(table_name)
 
-    # Create an Excel workbook and worksheet
+    # Creating an Excel workbook and worksheet
     workbook = openpyxl.Workbook()
     worksheet = workbook.active
 
-    # Write the headers
+    # Writing the headers
     headers = ["Name", "Roll No", "Status"]
     for col_num, header in enumerate(headers, 1):
         cell = worksheet.cell(row=1, column=col_num, value=header)
 
-    # Write the student data to the worksheet
+    # Writing the student data to the worksheet
     row_num = 2
     for student in entities:
         student_data = [student.PartitionKey, student.RowKey, student.Status]
@@ -327,21 +327,21 @@ def save_student_data_to_excel2():
             cell = worksheet.cell(row=row_num, column=col_num, value=data)
         row_num += 1
 
-    # Save the Excel workbook to a BytesIO buffer
+    # Saving the Excel workbook to a BytesIO buffer
     excel_buffer = BytesIO()
     workbook.save(excel_buffer)
     excel_buffer.seek(0)
 
-    # Return the Excel data as a BytesIO object
+    # Returning the Excel data as a BytesIO object
     return excel_buffer
 
 # Flask route to handle the download of the Records table
 @app.route('/download_records')
 def download_records():
-    # Get the Excel data from the "Records" table in Azure
+    # Geting the Excel data from the "Records" table in Azure
     excel_data = save_student_data_to_excel2()
 
-    # Send the Excel data as a downloadable file to the user
+    # Sending the Excel data as a downloadable file to the user
     return send_file(
         excel_data,
         as_attachment=True,
@@ -364,22 +364,22 @@ def video_stream_page():
 def handle_scanner_data():
     if request.method == 'POST':
         qr_data = request.form['data']
-        name, roll_no = qr_data.split(':')  # Assuming the data is in the format "name:roll_no"
+        name, roll_no = qr_data.split(':')
 
-        # Save the student data to the Azure Table
+        # Saving the student data to the Azure Table
         save_student_data_to_table(name, roll_no)
 
-        # Show confirmation message using JavaScript alert
+        # Showing confirmation message using JavaScript alert
         return render_template('video_stream.html')
 
-    # Handle other HTTP methods (if needed)
+    # Handling other HTTP methods (if needed)
     return "Invalid request method.", 405
 
 def is_duplicate(name, roll_no):
-    # Initialize the TableService with the storage account name and key
+    # Initializing the TableService with the storage account name and key
     table_service = TableService(account_name=storage_account_name, account_key=storage_account_key)
 
-    # Query the table to check if the roll_no already exists
+    # Querying the table to check if the roll_no already exists
     query_filter = f"PartitionKey eq '{name}' and RowKey eq '{roll_no}'"
     entities = table_service.query_entities(TABLE_NAME, filter=query_filter)
 
@@ -387,10 +387,10 @@ def is_duplicate(name, roll_no):
     return any(entities)
 
 def save_student_data_to_table(name, roll_no):
-    # Initialize the TableService with the storage account name and key
+    # Initializing the TableService with the storage account name and key
     table_service = TableService(account_name=storage_account_name, account_key=storage_account_key)
 
-    # Check if the entity with the given name and roll_no exists
+    # Checking if the entity with the given name and roll_no exists
     try:
         existing_entity = table_service.get_entity(TABLE_NAME, name, roll_no)
     except AzureMissingResourceHttpError as ex:
