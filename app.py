@@ -1,4 +1,5 @@
 import logging
+import os
 import traceback
 from flask import Flask, render_template, request, redirect, session, send_file
 from azure.storage.blob import BlobServiceClient
@@ -13,20 +14,20 @@ from io import BytesIO
 from email.mime.image import MIMEImage
 
 app = Flask(__name__)
-app.secret_key = 'sanketh2341562'
+app.secret_key = os.environ.get('app.secret_key')
 # Replacing with actual Azure Storage account credentials
 storage_account_name = 'blobdatabase234'
-storage_account_key = 'xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw=='
+storage_account_key = os.environ.get('storage_account_key')
 container_name = 'login'
 excel_file_name = 'credentials.xlsx'
 excel_file_name1 = 'studentform.xlsx'
 TABLE_NAME = "Records"
+connection_stringkey = os.environ.get('connection_stringkey')
 table_service = TableService(account_name=storage_account_name, account_key=storage_account_key)
 
 def save_student_data_to_excel(name, roll_no, email):
     # Replacing with Azure Table storage account connection string
-    connection_string = "DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net"
-    table_service = TableService(connection_string=connection_string)
+    table_service = TableService(connection_string=connection_stringkey)
 
     # Define the name of Azure Table
     table_name = "studentdata1"
@@ -47,8 +48,7 @@ def save_student_data_to_excel(name, roll_no, email):
 
 def save_student_data_to_excel1(name, roll_no, email, status):
     # Replacing with Azure Table storage account connection string
-    connection_string = "DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net"
-    table_service = TableService(connection_string=connection_string)
+    table_service = TableService(connection_string=connection_stringkey)
 
     # Defining the name of Azure Table
     table_name = "Records"
@@ -71,7 +71,7 @@ def save_student_data_to_excel1(name, roll_no, email, status):
 @app.route('/delete_all_rows', methods=['POST'])
 def delete_all_rows():
     # Connecting to the Azure Table storage
-    table_service = TableService(connection_string='DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net')
+    table_service = TableService(connection_string=connection_stringkey)
 
     # Geting all entities from the table
     entities = table_service.query_entities('studentdata1')
@@ -81,13 +81,11 @@ def delete_all_rows():
         table_service.delete_entity('studentdata1', entity.PartitionKey, entity.RowKey)
 
     # Replacing with the Azure Blob storage account connection string
-    blob_connection_string = "DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net"
-
     # Replacing with the name of your container containing the QR codes
     container_name = "qrcodes"
 
     # Initialize the BlobServiceClient using the connection string
-    blob_service_client = BlobServiceClient.from_connection_string(blob_connection_string)
+    blob_service_client = BlobServiceClient.from_connection_string(connection_stringkey)
 
     # Getting a list of blobs in the "qrcode" container
     container_client = blob_service_client.get_container_client(container_name)
@@ -111,7 +109,8 @@ def login():
 
         # Connecting to Azure Storage Blob
         container_name = 'login'
-        blob_service_client = BlobServiceClient.from_connection_string('DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net')
+        
+        blob_service_client = BlobServiceClient.from_connection_string(connection_stringkey)
         container_client = blob_service_client.get_container_client(container_name)
 
         # Authenticating user from the Excel file
@@ -188,8 +187,7 @@ def submit_form():
 # Function to fetch student data and QR code URLs from Azure Table storage
 def fetch_student_data_from_table():
     # Replacing with your Azure Table storage account connection string
-    connection_string = "DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net"
-    table_service = TableService(connection_string=connection_string)
+    table_service = TableService(connection_string=connection_stringkey)
 
     # Replacing with your Azure Table name
     table_name = "studentdata1"
@@ -270,14 +268,14 @@ def send_email(smtp_username, smtp_password, sender_email, receiver_email, subje
 def sendmail():
     # Replacing with the SMTP email credentials
     smtp_username = 'spalaksha@gmail.com'
-    smtp_password = 'bpthefuurfbbnzbx'
+    smtp_password = os.environ.get('smtp_password')
     sender_email = 'spalaksha@gmail.com'
 
     # Fetching student data and QR code URLs from Azure Table storage
     qr_codes_data = fetch_student_data_from_table()
 
     # Fetching the Blob Service Client
-    blob_service_client = BlobServiceClient.from_connection_string("DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net")
+    blob_service_client = BlobServiceClient.from_connection_string(connection_stringkey)
     container_client = blob_service_client.get_container_client("qrcodes")
 
     # Looping through the QR codes data and send emails to each student
@@ -302,8 +300,7 @@ def sendmail():
 
 def save_student_data_to_excel2():
     # Replacing with the Azure Table storage account connection string
-    connection_string = "DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net"
-    table_service = TableService(connection_string=connection_string)
+    table_service = TableService(connection_string=connection_stringkey)
 
     # Defining the name of your Azure Table
     table_name = "Records"
