@@ -550,6 +550,7 @@ p {
    
 }
 }
+@media (max-width: 600px) {
 .form-label1 {
   font-size: 48px;
   margin-bottom: 10px;
@@ -559,6 +560,7 @@ p {
   -webkit-background-clip: text; /* For Safari support */
   color: transparent; /* Make the text transparent */
   line-height: 2.3;
+}
 }
 
 @media (max-width: 600px) {
