@@ -505,21 +505,21 @@ p {
 
 @media (max-width: 600px) {
   .icon-container {
-    margin-top: 70px;
-    margin-left: 35px;
+    margin-top: 90px;
+    margin-left: 75px;
   }
 }
 
 @media (max-width: 600px) {
 .student-icon {
-  font-size: 35px; /* You can adjust the size as needed */
-  margin-right: 55px;
+  font-size: 75px; /* You can adjust the size as needed */
+  margin-left: 75px;
 }
 }
 
 @media (max-width: 600px) {
 .student-icon1 {
-  font-size: 35px; /* You can adjust the size as needed */
+  font-size: 75px; /* You can adjust the size as needed */
   margin-left: 155px;
 }
 }
@@ -558,12 +558,12 @@ p {
 @media (max-width: 600px) {
 .login-heading {
   font-family: 'Montserrat', sans-serif;
-  font-size: 74px;
+  font-size: 100px;
   color: #fff;
   display: inline-block;
   background: linear-gradient(45deg, #ed144e, #355661);
-  border-radius: 60px;
-  padding: 60px;
+  border-radius: 1000px;
+  padding: 1000px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 0 auto 60px; /* Center the heading horizontally and add margin below it */
 }
@@ -571,7 +571,7 @@ p {
 
 @media (max-width: 600px) {
 .form-label {
-  font-size: 38px;
+  font-size: 68px;
   margin-bottom: 18px;
   margin-right: 70px;
   font-weight: bold;
@@ -594,13 +594,13 @@ p {
 @media (max-width: 600px) {
 .login-container {
   text-align: center;
-  padding: 60px;
+  padding: 100px;
   width: fit-content; /* Set the container width to fit its content */
   position: absolute; /* Set the position to absolute */
   top: 35%; /* Vertically align the container to the middle */
-  transform: translateY(-50%); /* Center it perfectly */
+  transform: translateY(-30%); /* Center it perfectly */
   left: 43%; /* Horizontally align the container to the middle */
-  margin-left: -50px; /* Adjust this value to half of the container width */
+  margin-left: -30px; /* Adjust this value to half of the container width */
 }
 }
 
@@ -623,7 +623,7 @@ p {
   color: #FFFFFF;
   cursor: pointer;
   font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
-  font-size: 28px;
+  font-size: 58px;
   font-weight: 700;
   line-height: 24px;
   opacity: 1;
