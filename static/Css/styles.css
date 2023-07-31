@@ -490,7 +490,7 @@ p {
 @media (max-width: 600px) {
 .student-icon1 {
   font-size: 75px; /* You can adjust the size as needed */
-  margin-left: 93px;
+  margin-left: 102px;
   display: inline;
 }
 }
@@ -535,7 +535,7 @@ p {
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 0 auto 20px;
+    margin-left: 30px;
 }
 }
 
