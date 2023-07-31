@@ -544,14 +544,14 @@ p {
 }
 @media (max-width: 600px) {
 .student-icon {
-  margin-left:25px;
+  margin-left:35px;
   font-size: 80px; /* You can adjust the size as needed */
 }
 }
 
 @media (max-width: 600px) {
   .student-icon1 {
-    font-size: 25px; /* You can adjust the size as needed */
+    font-size: 175px; /* You can adjust the size as needed */
     margin-left: 75px;
   }
   }

@@ -24,7 +24,7 @@ TABLE_NAME = "Records"
 table_service = TableService(account_name=storage_account_name, account_key=storage_account_key)
 
 def save_student_data_to_excel(name, roll_no, email):
-    # Replace with Azure Table storage account connection string
+    # Replacing with Azure Table storage account connection string
     connection_string = "DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net"
     table_service = TableService(connection_string=connection_string)
 
@@ -45,14 +45,12 @@ def save_student_data_to_excel(name, roll_no, email):
     # Inserting the entity into the Azure Table
     table_service.insert_or_replace_entity(table_name, student_entity)
 
-# Your existing functions and routes here...
-
 def save_student_data_to_excel1(name, roll_no, email, status):
-    # Replace with your Azure Table storage account connection string
+    # Replacing with Azure Table storage account connection string
     connection_string = "DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net"
     table_service = TableService(connection_string=connection_string)
 
-    # Define the name of your Azure Table
+    # Defining the name of Azure Table
     table_name = "Records"
 
     # Create the table if it doesn't exist
@@ -66,7 +64,7 @@ def save_student_data_to_excel1(name, roll_no, email, status):
         "Email": email,
         "Status": status,
     }
-    # Insert the entity into the Azure Table
+    # Inserting the entity into the Azure Table
     table_service.insert_or_replace_entity(table_name, student_entity)
 
 

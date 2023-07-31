@@ -526,7 +526,7 @@ p {
 }
 @media (max-width: 600px) {
 .student-icon {
-  font-size: 25px; /* You can adjust the size as needed */
+  font-size: 35px; /* You can adjust the size as needed */
   margin-left: 25px;
 }
 }
@@ -541,8 +541,7 @@ p {
 @media (max-width: 600px) {
   .icon-container {
     width: 100%;
-    margin-top: 40px; /* Adjust the top margin for mobile */
-    margin-left: 0; /* Remove the left margin for mobile */
+    margin-top: 40px;
   }
 }
 
