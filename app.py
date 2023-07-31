@@ -93,7 +93,7 @@ def delete_all_rows():
     container_client = blob_service_client.get_container_client(container_name)
     blobs = container_client.list_blobs()
 
-    # Delete each blob from the "qrcode" container
+    # Deleting each blob from the "qrcodes" container
     for blob in blobs:
         container_client.delete_blob(blob)
 
@@ -103,18 +103,18 @@ def delete_all_rows():
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
-    error_message = None  # Initialize error_message as None
+    error_message = None  
     if request.method == 'POST':
         # Retrieve login form data
         username = request.form['username']
         password = request.form['password']
 
-        # Connect to Azure Storage Blob
+        # Connecting to Azure Storage Blob
         container_name = 'login'
         blob_service_client = BlobServiceClient.from_connection_string('DefaultEndpointsProtocol=https;AccountName=blobdatabase234;AccountKey=xnu1+DDZO1s9n2y4qYU6J39WyBHZVMLIk6pWVl4bAi8WuvPrOJM9WuTppAAPAEWU3liXUnUm9NFx+AStzG1QAw==;EndpointSuffix=core.windows.net')
         container_client = blob_service_client.get_container_client(container_name)
 
-        # Authenticate user from the Excel file
+        # Authenticating user from the Excel file
         authenticated = authenticate_user(username, password, blob_service_client, container_name, excel_file_name)
 
         if authenticated:
@@ -127,13 +127,10 @@ def login():
 
 @app.route('/homepage', methods=['GET', 'POST'])
 def HomePage():
-    # You can add logic here to fetch data or prepare content for the homepage
-    # For example, fetching user-specific data, etc.
     return render_template('HomePage.html')
 
 @app.route('/logout')
 def logout():
-    # Add your logout logic here, for example, clearing the session
     session.clear()
     return redirect('/')
 
@@ -142,22 +139,21 @@ def about():
     return render_template('about.html')
 
 def authenticate_user(username, password, blob_service_client, container_name, excel_file_name):
-    # Get the blob client for the credentials.xlsx file in the login container
+    # Getting the blob client for the credentials.xlsx file in the login container
     blob_client = blob_service_client.get_blob_client(container=container_name, blob=excel_file_name)
 
     try:
-        # Download the credentials.xlsx file from Azure Blob storage
+        # Downloading the credentials.xlsx file from Azure Blob storage
         blob_data = blob_client.download_blob()
         blob_content = blob_data.readall()
 
-        # Load the Excel file from the blob content using BytesIO
+        # Loading the Excel file from the blob content using BytesIO
         excel_file = BytesIO(blob_content)
         workbook = openpyxl.load_workbook(excel_file)
 
-        # Get the active sheet
         sheet = workbook.active
 
-        # Iterate through rows and compare credentials
+        # Iterating through the rows and compare credentials
         for row in sheet.iter_rows(values_only=True):
             if row[0] == username and row[1] == password:
                 return True
@@ -175,15 +171,14 @@ def student_form():
 @app.route('/submit_form', methods=['GET', 'POST'])
 def submit_form():
     if request.method == 'POST':
-        # Retrieve form data from the request
+        # Retrieving form data from the request
         name = request.form['name']
         roll_no = request.form['roll_no']
         email = request.form['email']
 
-        # Save the data to the Excel file in Azure Blob Storage
+        # Saving the data to the Excel file in Azure Blob Storage
         save_student_data_to_excel(name, roll_no, email)
 
-        # Set the 'submitted' variable to True
         submitted = True
 
         return render_template('form.html',submitted=submitted)
@@ -198,14 +193,13 @@ def fetch_student_data_from_table():
     # Replacing with your Azure Table name
     table_name = "studentdata1"
 
-    # Fetch all entities from the Azure Table
+    # Fetching all entities from the Azure Table
     entities = table_service.query_entities(table_name)
 
-    # Initialize a list to store student data and QR code URLs
+    # Initializing a list to store student data and QR code URLs
     qr_codes_data = []
 
-    # Iterate through each entity and get the student data and QR code URLs
-    # Iterate through each entity and get the student data and QR code URLs
+    # Iterating through each entity and get the student data and QR code URLs
     for entity in entities:
         name = entity.get('PartitionKey', '')
         roll_no = entity.get('RowKey', '')
@@ -213,52 +207,49 @@ def fetch_student_data_from_table():
         qr_codes_data.append({"name": name, "roll_no": roll_no, "email": email})
 
     return qr_codes_data
-# Function to send an email with an attachment
-# Flask route to generate QR codes, send emails, and display success message
+# Functioning to send an email with an attachment
+
 
 # Flask route to fetch QR codes and display success message
 @app.route('/generate_qr_codes', methods=['POST'])
 def generate_qr_codes():
-    # Make a GET request to the Azure Function endpoint that generates QR codes
+    # Making a GET request to the Azure Function endpoint that generates QR codes
     response = requests.get("https://qrcode111.azurewebsites.net/api/generateallqrcodes")  # Replacing with the URL of your Azure Function
-    # Check the status code to determine if the request was successful
+    # Checking the status code to determine if the request was successful
     if response.status_code == 200:
-        # Render the form.html template with the success message
+        # Rendering the form.html template with the success message
         return render_template('form.html')
     else:
-        # Handle the case where the request was not successful
-        # You can return an error message or redirect to an error page
+        # Handling the case where the request was not successful
         return render_template('form.html')
 
 
-# ... (other code remains the same) ...
-
 def send_email(smtp_username, smtp_password, sender_email, receiver_email, subject, message, qr_code_urls):
-    # Set up the MIMEMultipart object with the email content
+    # Seting up the MIMEMultipart object with the email content
     msg = MIMEMultipart()
     msg['From'] = sender_email
     msg['To'] = receiver_email
     msg['Subject'] = subject
 
-    # Attach the plain text message to the email
+    # Attaching the plain text message to the email
     msg.attach(MIMEText(message, 'plain'))
 
-    # Fetch QR code images from Blob storage and attach them to the email
+    # Fetching QR code images from Blob storage and attach them to the email
     for qr_code_url in qr_code_urls:
-        # Fetch the QR code image data from the Blob storage URL
+        # Fetching the QR code image data from the Blob storage URL
         response = requests.get(qr_code_url)
         if response.status_code == 200:
             qr_code_data = response.content
 
-            # Extract the filename from the URL and encode it properly
+            # Extracting the filename from the URL and encode it properly
             qr_code_filename = qr_code_url.split("/")[-1]
 
-            # Attach the QR code image to the email
+            # Attaching the QR code image to the email
             qr_code_attachment = MIMEImage(qr_code_data, name=qr_code_filename)
             msg.attach(qr_code_attachment)
 
     try:
-        # Connect to the SMTP server and send the email
+        # Connecting to the SMTP server and send the email
         with smtplib.SMTP('smtp.gmail.com', 587) as server:
             server.starttls()
             server.login(smtp_username, smtp_password)
