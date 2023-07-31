@@ -134,6 +134,7 @@ def logout():
     session.clear()
     return redirect('/')
 
+
 @app.route('/about')
 def about():
     return render_template('about.html')
