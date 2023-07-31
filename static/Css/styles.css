@@ -526,7 +526,7 @@ p {
 @media (max-width: 600px) {
   .login-heading {
     font-family: 'Montserrat', sans-serif;
-    font-size: 88px;
+    font-size: 58px;
     color: #fff;
     display: inline-block;
     background: linear-gradient(45deg, #ed144e, #355661);
@@ -539,7 +539,7 @@ p {
 
 @media (max-width: 600px) {
   .form-label {
-    font-size: 58px;
+    font-size: 48px;
     margin-bottom: 10px;
     margin-right: 50px;
     font-weight: bold;
@@ -551,19 +551,30 @@ p {
    
 }
 }
+.form-label1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  background-image: linear-gradient(45deg, #bc1e43, #1c657d);
+  background-clip: text; /* Apply gradient to the text only */
+  -webkit-background-clip: text; /* For Safari support */
+  color: transparent; /* Make the text transparent */
+  line-height: 2.3;
+}
+
 @media (max-width: 600px) {
 .input-group {
   display: flex;
   align-items: center;
   justify-content: center;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 70px 1fr;
 }
 }
 
 @media (max-width: 600px) {
   .login-container {
     text-align: center;
-    padding: 30px;
+    padding: 20px;
     width: fit-content; /* Set the container width to fit its content */
     position: absolute; /* Set the position to absolute */
     top: 55%; /* Vertically align the container to the middle */
