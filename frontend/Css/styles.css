@@ -53,6 +53,7 @@ h1
   margin-right: 30px;
   margin-left: 30px;
 }
+
 /* Add a black background color to the top navigation */
 @supports (background-clip: text) or (-webkit-background-clip: text) {
 .topnav {
@@ -86,6 +87,7 @@ h1
   .topnav a.active {
     background-color: #236ca4;
     color: white;
+    margin-left: 3%;
   }
 
   .login-container {
@@ -267,7 +269,7 @@ p {
 .student-icon1 {
 
   font-size: 148px; /* You can adjust the size as needed */
-
+  margin-left: 520px;
 }
 .icon-container {
   margin-top: 160px; 
@@ -504,19 +506,36 @@ p {
   display: inline;
 }
 
-/* Media query for screens with a maximum width of 270px (typical for mobile devices) */
+/* Media query for screens with a maximum width of 279px (typical for mobile devices) */
 @media (max-width: 600px) {
   .heading {
-    margin-left: 240px; 
+    font-size: medium;
+    margin-left: 0px; 
     display: inline;
+    width: 100%;
   }
 }
 /* Media query for screens with a maximum width of 270px (typical for mobile devices) */
 @media (max-width: 600px) {
   .heading1 {
-    margin-left: 220px; 
+    font-size: medium;
+    margin-left: 25px; 
     display: inline;
+    width: 100%;
   }
+}
+@media (max-width: 600px) {
+.student-icon {
+  font-size: 25px; /* You can adjust the size as needed */
+  margin-left: 25px;
+}
+}
+
+@media (max-width: 600px) {
+.student-icon1 {
+  font-size: 25px; /* You can adjust the size as needed */
+  margin-left: 75px;
+}
 }
 
 @media (max-width: 600px) {
@@ -547,5 +566,13 @@ p {
   background-size: cover;
   background-position: center; 
 
+}
+}
+@media (max-width: 600px) {
+ /* Add a color to the active/current link */
+ .topnav a.active {
+  background-color: #236ca4;
+  color: white;
+  margin-left: 3%;
 }
 }

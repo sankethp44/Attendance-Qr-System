@@ -93,6 +93,7 @@ h1
   .topnav a.active {
     background-color: #236ca4;
     color: white;
+    margin-left: 3%;
   }
 
   .login-container {
@@ -251,6 +252,11 @@ p {
 
   font-size: 148px; /* You can adjust the size as needed */
 
+}
+.student-icon1 {
+
+  font-size: 148px; /* You can adjust the size as needed */
+  margin-left: 520px;
 }
 .icon-container {
   display: flex;
@@ -538,11 +544,17 @@ p {
 }
 @media (max-width: 600px) {
 .student-icon {
-
+  margin-left:25px;
   font-size: 80px; /* You can adjust the size as needed */
+}
+}
 
-}
-}
+@media (max-width: 600px) {
+  .student-icon1 {
+    font-size: 25px; /* You can adjust the size as needed */
+    margin-left: 75px;
+  }
+  }
 
 @media (max-width: 600px) {
   .icon-container {
@@ -573,3 +585,12 @@ p {
   
   }
   }
+
+  @media (max-width: 600px) {
+    /* Add a color to the active/current link */
+    .topnav a.active {
+     background-color: #236ca4;
+     color: white;
+     margin-left: 3%;
+   }
+   }
