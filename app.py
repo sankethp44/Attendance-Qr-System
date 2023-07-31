@@ -399,13 +399,13 @@ def save_student_data_to_table(name, roll_no):
         student_data = {
             'PartitionKey': name,
             'RowKey': roll_no,
-            'Status': 'present'  # You can set the Status to 'present'
+            'Status': 'Present'  # You can set the Status to 'Present'
         }
         table_service.insert_entity(TABLE_NAME, student_data)
         return
 
-    # If the entity exists, update its Status to 'present'
-    existing_entity['Status'] = 'present'
+    # If the entity exists, update its Status to 'Present'
+    existing_entity['Status'] = 'Present'
     table_service.update_entity(TABLE_NAME, existing_entity)
 
 
