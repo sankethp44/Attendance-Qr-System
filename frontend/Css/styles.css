@@ -520,6 +520,7 @@ p {
     margin-left: 0; /* Remove the left margin */
     display: block; /* Change display to block to stack the headings vertically */
     display: inline;
+    width: 100%;
   }
 }
 /* Media query for screens with a maximum width of 768px (typical for mobile devices) */
@@ -528,18 +529,21 @@ p {
     margin-left: 320px; /* Remove the left margin */
     display: block; /* Change display to block to stack the headings vertically */
     display: inline;
+    width: 100%;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 300px) {
   .icon-container {
+    width: 100%;
     margin-top: 40px; /* Adjust the top margin for mobile */
     margin-left: 0; /* Remove the left margin for mobile */
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 300px) {
 .icon-container {
+  width: 100%;
   margin-top: 260px; 
   margin-left: 230px; /* Adjust the margin as needed */
  
