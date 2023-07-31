@@ -519,15 +519,6 @@ p {
   .heading {
     margin-left: 240px; 
     display: inline;
-    width: 100%;
-  }
-}
-/* Media query for screens with a maximum width of 270px (typical for mobile devices) */
-@media (max-width: 270px) {
-  .heading1 {
-    margin-left: 220px; 
-    display: inline;
-    width: 100%;
   }
 }
 
