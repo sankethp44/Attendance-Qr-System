@@ -39,7 +39,7 @@ Azure technologies used :
 
 ## Qr code for testing or you can download yours by specifying email address in Student operation's page
 
-![Sanketh P_21bcae32](https://github.com/sankethp44/Attendance-Qr-System/assets/122307186/d092ca1f-5846-4b59-8deb-f2c023815eb0)
+![Sanketh P_21bcae32](https://github.com/sankethp44/Attendance-Qr-System/assets/122307186/f0ff264a-f51a-49a9-8746-12897b56015e)
 
 ![Studentform](https://github.com/sankethp44/Attendance-Qr-System/assets/122307186/8a8da1c3-b66a-42dc-9992-bc4d3653fbae)
 
