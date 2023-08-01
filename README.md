@@ -2,7 +2,11 @@
 
 # Credentials     
 **Username: frt**        
-**Password: frt**           
+**Password: frt**   
+# Testing Qr code
+## Qr code for testing or you can download yours by specifying email address in Student operation's page
+
+![Sanketh P_21bcae32](https://github.com/sankethp44/Attendance-Qr-System/assets/122307186/f0ff264a-f51a-49a9-8746-12897b56015e)
 # About
 
 [Azure project link](https://azureweba.azurewebsites.net/)    
@@ -36,10 +40,6 @@ Azure technologies used :
 
 ![Homepage](https://github.com/sankethp44/Attendance-Qr-System/assets/122307186/e5a900b8-88ea-47c1-b308-8927f369a5e5)
 
-
-## Qr code for testing or you can download yours by specifying email address in Student operation's page
-
-![Sanketh P_21bcae32](https://github.com/sankethp44/Attendance-Qr-System/assets/122307186/f0ff264a-f51a-49a9-8746-12897b56015e)
 
 ![Studentform](https://github.com/sankethp44/Attendance-Qr-System/assets/122307186/8a8da1c3-b66a-42dc-9992-bc4d3653fbae)
 
