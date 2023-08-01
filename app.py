@@ -1,30 +1,22 @@
 import logging
 import traceback
 from azure.cosmosdb.table.tableservice import TableService
-from email.message import EmailMessage
-from flask import Flask, render_template, request, redirect, session, jsonify, send_file
-import json
+from flask import Flask, render_template, request, redirect, session, send_file
 from flask import Flask, render_template, request, redirect, session, send_file
 from azure.storage.blob import BlobServiceClient
-import openpyxl,io
+import openpyxl
 from azure.common import AzureMissingResourceHttpError
-from urllib.parse import quote
 import openpyxl
 from azure.cosmosdb.table.tableservice import TableService
-from azure.cosmosdb.table.models import Entity
 import requests
 from azure.common import AzureMissingResourceHttpError
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
-from email import encoders
 import os
 from io import BytesIO
 from email.mime.image import MIMEImage
-from azure.storage.blob import BlobServiceClien
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('app.secret_key')
