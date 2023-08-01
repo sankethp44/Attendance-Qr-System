@@ -1,7 +1,7 @@
 import logging
 import traceback
 from azure.cosmosdb.table.tableservice import TableService
-from flask import Flask, render_template, request, redirect, session, send_file
+from flask import Flask, render_template, request, redirect, session, send_file, url_for
 from flask import Flask, render_template, request, redirect, session, send_file
 from azure.storage.blob import BlobServiceClient
 import openpyxl
@@ -137,15 +137,16 @@ def login():
 def HomePage():
     return render_template('HomePage.html')
 
-@app.route('/logout')
-def logout():
-    session.clear()
-    return render_template('index.html')
+
 
 
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/logout')
+def logout():
+    return redirect('/')
 
 def authenticate_user(username, password, blob_service_client, container_name, excel_file_name):
     # Getting the blob client for the credentials.xlsx file in the login container
