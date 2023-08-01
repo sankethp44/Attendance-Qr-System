@@ -1,8 +1,12 @@
 # Attendance Qr system
+
+# Credentials     
+**Username: frt**        
+**Password: frt**           
 # About
 
-[Azure project link](https://azureweba.azurewebsites.net/)      
-[Video demo link](https://youtu.be/HwHtArWor8E)  
+[Azure project link](https://azureweba.azurewebsites.net/)    
+[Video demo link](https://youtu.be/HwHtArWor8E)    
 
 This is a responsive website built using html, Css, Javascript, Python, Flask and Azure Services like Azure Web Apps,Storage account, Function app.
 - The main purpose of this website is to implement a solution for attendance of students, gathered for a big seminar, event.      
@@ -27,6 +31,7 @@ Azure technologies used :
 - Easier way to handle 100's records for hussle for attendance process   
       
 # Screenshots
+
 ![Loginpage](https://github.com/sankethp44/Attendance-Qr-System/assets/122307186/dedbf3e1-4cd2-4f29-b2af-57c3783cacf8)
 
 ![Homepage](https://github.com/sankethp44/Attendance-Qr-System/assets/122307186/e5a900b8-88ea-47c1-b308-8927f369a5e5)
