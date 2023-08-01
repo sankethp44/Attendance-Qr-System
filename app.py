@@ -222,7 +222,7 @@ def fetch_student_data_from_table():
 @app.route('/generate_qr_codes', methods=['POST'])
 def generate_qr_codes():
     # Making a GET request to the Azure Function endpoint that generates QR codes
-    response = requests.get("https://qrcode111.azurewebsites.net/api/generateallqrcodes?")  # Replacing with the URL of your Azure Function
+    response = requests.get("https://qrcode111.azurewebsites.net/api/generateallqrcodes")  # Replacing with the URL of your Azure Function
     # Checking the status code to determine if the request was successful
     if response.status_code == 200:
         # Rendering the form.html template with the success message
