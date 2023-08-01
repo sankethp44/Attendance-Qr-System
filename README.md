@@ -5,6 +5,7 @@
 **Password: frt**   
 # Testing Qr code
 ## Qr code for testing or you can download yours by specifying email address in Student operation's page
+### Please open this website from your mobile to use the scanning feature.
 
 ![Sanketh P_21bcae32](https://github.com/sankethp44/Attendance-Qr-System/assets/122307186/f0ff264a-f51a-49a9-8746-12897b56015e)
 # About
