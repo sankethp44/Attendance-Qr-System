@@ -24,7 +24,7 @@ Azure technologies used :
 - Easy to use     
 - Multiple device responsive website    
 - Generating qrcodes and sending mails to student with 100% accuracy     
-- Easier way to handle 100's records for hussle free attendance process   
+- Easier way to handle 100's records for hussle for attendance process   
       
 # Screenshots
 ![Loginpage](https://github.com/sankethp44/Attendance-Qr-System/assets/122307186/dedbf3e1-4cd2-4f29-b2af-57c3783cacf8)
