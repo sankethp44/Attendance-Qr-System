@@ -17,7 +17,7 @@ This is a responsive website built using html, Css, Javascript, Python, Flask an
 - The Qr code will be generated and sent through mail to students prior a day and they should download the code and get it scanned at the event to mark their attendance.    
 - Faculty members can use the Scanner feature on our website through mobile phones and start scanning the student's qr code to register their attendance for that event.      
 - A excel file will generated which faculty members can download it and view the attendance of students.     
-- Using our website a lot of time and helps improve accuracy.
+- Using our website a lot of time will be saved and helps improve accuracy.
 
      
 Azure technologies used :
