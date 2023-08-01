@@ -150,7 +150,27 @@ h1
   -webkit-background-clip: text; /* For Safari support */
   color: transparent; /* Make the text transparent */
   line-height: 2.3;
+
 }
+.form-label111 {
+  font-size: 25px;
+  margin-top: 10px;
+  font-weight: bold;
+  background-image: linear-gradient(45deg, #3547c0, #2c5866);
+  background-clip: text; /* Apply gradient to the text only */
+  -webkit-background-clip: text; /* For Safari support */
+  color: transparent; /* Make the text transparent */
+  
+
+}
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
 .form-label12 {
   font-size: 30px;
   margin-top: 50px;
