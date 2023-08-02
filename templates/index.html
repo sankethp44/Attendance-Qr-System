@@ -29,6 +29,7 @@
                 <button class="my-button" >Log-in</button>
                 <button type="button" class="my-button" onclick="cancel()">Cancel</button>
             </div>
+            
             {% if error_message %}
             <p id="error-message" class="error-message">{{ error_message }}</p>
             {% endif %}
@@ -50,18 +51,8 @@
         // Add event listeners to input fields to hide the error message
         document.getElementById('username').addEventListener('input', hideErrorMessage);
         document.getElementById('password').addEventListener('input', hideErrorMessage);
+       
         function cancel() {
-    // Reset the form fields
-    document.getElementById('username').value = '';
-    document.getElementById('password').value = '';
-
-    // Hide the error message
-    const errorMessage = document.getElementById('error-message');
-    if (errorMessage) {
-        errorMessage.style.display = 'none';
-    }
-}
-function cancel() {
             // Reset the form fields
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
