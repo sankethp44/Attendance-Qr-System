@@ -11,7 +11,7 @@
 # About
 
 [Azure project link](https://azureweba.azurewebsites.net/)    
-[Video demo link](https://youtu.be/HwHtArWor8E)    
+[Video demo link](https://youtu.be/-lt62mKJdkE) 
 
 This is a responsive website built using html, Css, Javascript, Python, Flask and Azure Services like Azure Web Apps,Storage account, Function app.
 - The main purpose of this website is to implement a solution for attendance of students, gathered for a big seminar, event.      
